@@ -11,5 +11,5 @@ title: This will be used as the title-tag of the page head
 
 [I'm a relative reference to a repository file](../../index.html)
 
-[[Link Text|WikiPage]]
+[Link Text](WikiPage)
 
