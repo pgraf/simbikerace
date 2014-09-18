@@ -2,6 +2,7 @@ import os,sys
 from math import exp
 
 def get_options():
+    """ set up the options """
     import os, os.path
     from optparse import OptionParser
     parser = OptionParser()    
@@ -14,6 +15,7 @@ def get_options():
     
 
 class Rider(object):
+    """ data for one rider """
     def __init__(self,x,v,gap,rider_num):
         self.x = x
         self.v = v
@@ -22,6 +24,7 @@ class Rider(object):
         self.riderchain_len = 0
 
 def get_pos(rider):
+    """ get rider's position """
     return rider.x
 
 
@@ -35,7 +38,9 @@ def minsec2hrs(s):
     return h
 
 class BikeRace(object):
+    """ class that manages the whole race """
     def __init__(self):
+        """ pretty empty """
         self.riders = None
         self.dt = 0.001   # hours
         self.dtout = 0.005  # hours
@@ -51,6 +56,7 @@ class BikeRace(object):
         self.v1 = 1
 
     def vfun(self,glen):
+        """ defines how riders speed depends on size of group """
         if (self.options.vmodel == "exp"):
             v = self.vmax - (self.vmax-self.vmin)*exp(-(glen-1)/self.vdecay)
         else:
@@ -58,6 +64,7 @@ class BikeRace(object):
         return v
 
     def setup(self, options):
+        """ set up the race """
         self.options = options
 
         if (options.nriders != None):
@@ -75,6 +82,7 @@ class BikeRace(object):
 
 
     def run(self, options):
+        """ run the race """
         self.dump_riders()
         while self.riders[-1].x < self.race_length:
             self.advance_time()
@@ -83,6 +91,7 @@ class BikeRace(object):
             self.update_speeds()
 
     def dump_riders(self):
+        """ write out riders and positions, etc """
         print "riders at time = %f" % self.t
         print "pos    speed   initial_gap   chain_len   rider_num"  
         for i in range(len(self.riders)):
@@ -95,6 +104,7 @@ class BikeRace(object):
                 self.fout.write("%f  %f  %f  %f  %d  %d\n" % (self.t, r.x, r.v, r.gap, r.riderchain_len, r.rider_num))
             
     def advance_time(self):
+        """ do one time step of race """
         eps = 1e-6
         for i in range(len(self.riders)):
             if (self.t + eps >= self.riders[i].gap):
@@ -102,11 +112,14 @@ class BikeRace(object):
         self.t += self.dt
 
     def sort_riders(self):
+        """ sort riders by position """
         self.riders = sorted(self.riders, key=get_pos, reverse=True)
     
     def update_speeds(self):
-        # assuming riders.x is sorted, we are counting how many riders make a "chain", then
-        # assigning speed based on that.        
+        """
+         assuming riders.x is sorted, we are counting how many riders make a "chain", then
+         assigning speed based on that.        
+         """
         i = 0
         eps = 1e-6
         while i < len(self.riders):
@@ -124,6 +137,7 @@ class BikeRace(object):
             i += j
 
 if __name__=="__main__":
+    """ main code to set up and run the race """
     options, args = get_options()
     race = BikeRace()
     race.setup(options)
