@@ -49,7 +49,8 @@
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
 
-<span class="k">def</span> <span class="nf">get_options</span><span class="p">():</span>
+<div class="viewcode-block" id="get_options"><a class="viewcode-back" href="../documentation.html#bikerace.get_options">[docs]</a><span class="k">def</span> <span class="nf">get_options</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; set up the options &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">os.path</span>
     <span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>    
@@ -60,19 +61,21 @@
     <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">options</span><span class="p">,</span> <span class="n">args</span>
     
-
-<span class="k">class</span> <span class="nc">Rider</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="Rider"><a class="viewcode-back" href="../documentation.html#bikerace.Rider">[docs]</a><span class="k">class</span> <span class="nc">Rider</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; data for one rider &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">gap</span><span class="p">,</span><span class="n">rider_num</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="n">v</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gap</span> <span class="o">=</span> <span class="n">gap</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rider_num</span> <span class="o">=</span> <span class="n">rider_num</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">riderchain_len</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">get_pos</span><span class="p">(</span><span class="n">rider</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="get_pos"><a class="viewcode-back" href="../documentation.html#bikerace.get_pos">[docs]</a><span class="k">def</span> <span class="nf">get_pos</span><span class="p">(</span><span class="n">rider</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; get rider&#39;s position &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">rider</span><span class="o">.</span><span class="n">x</span>
 
-
+</div>
 <div class="viewcode-block" id="minsec2hrs"><a class="viewcode-back" href="../documentation.html#bikerace.minsec2hrs">[docs]</a><span class="k">def</span> <span class="nf">minsec2hrs</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; string s e.g. &quot;2.33&quot; or &quot;2:33&quot;.  convert to 2 minutes, 33 seconds = 2/60 + 33 / 3600 hours &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">re</span>
@@ -82,8 +85,10 @@
         <span class="n">h</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mf">3600.0</span>
     <span class="k">return</span> <span class="n">h</span>
 </div>
-<span class="k">class</span> <span class="nc">BikeRace</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BikeRace"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace">[docs]</a><span class="k">class</span> <span class="nc">BikeRace</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; class that manages the whole race &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="BikeRace.__init__"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; pretty empty &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">riders</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>   <span class="c"># hours</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dtout</span> <span class="o">=</span> <span class="mf">0.005</span>  <span class="c"># hours</span>
@@ -97,15 +102,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">vdecay</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c"># units: group size</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="mf">15.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">v1</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="k">def</span> <span class="nf">vfun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">glen</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="BikeRace.vfun"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.vfun">[docs]</a>    <span class="k">def</span> <span class="nf">vfun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">glen</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; defines how riders speed depends on size of group &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">vmodel</span> <span class="o">==</span> <span class="s">&quot;exp&quot;</span><span class="p">):</span>
             <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vmax</span> <span class="o">-</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vmax</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">vmin</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">glen</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">vdecay</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">v1</span> <span class="o">*</span> <span class="p">(</span><span class="n">glen</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">v</span>
-
-    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="BikeRace.setup"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; set up the race &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">nriders</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">):</span>
@@ -121,16 +128,18 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;# nrider: </span><span class="si">%d</span><span class="se">\n</span><span class="s">&quot;</span>  <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;#time pos vel gap0 glen place0</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
 
-
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="BikeRace.run"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; run the race &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dump_riders</span><span class="p">()</span>
         <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">race_length</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">advance_time</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sort_riders</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">dump_riders</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update_speeds</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">dump_riders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="BikeRace.dump_riders"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.dump_riders">[docs]</a>    <span class="k">def</span> <span class="nf">dump_riders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; write out riders and positions, etc &quot;&quot;&quot;</span>
         <span class="k">print</span> <span class="s">&quot;riders at time = </span><span class="si">%f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
         <span class="k">print</span> <span class="s">&quot;pos    speed   initial_gap   chain_len   rider_num&quot;</span>  
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">)):</span>
@@ -141,20 +150,24 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">)):</span>
                 <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>            
                 <span class="bp">self</span><span class="o">.</span><span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%f</span><span class="s">  </span><span class="si">%f</span><span class="s">  </span><span class="si">%f</span><span class="s">  </span><span class="si">%f</span><span class="s">  </span><span class="si">%d</span><span class="s">  </span><span class="si">%d</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">v</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">gap</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">riderchain_len</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">rider_num</span><span class="p">))</span>
-            
-    <span class="k">def</span> <span class="nf">advance_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            </div>
+<div class="viewcode-block" id="BikeRace.advance_time"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.advance_time">[docs]</a>    <span class="k">def</span> <span class="nf">advance_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; do one time step of race &quot;&quot;&quot;</span>
         <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">)):</span>
             <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+</span> <span class="n">eps</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">gap</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">t</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span>
-
-    <span class="k">def</span> <span class="nf">sort_riders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</div>
+<div class="viewcode-block" id="BikeRace.sort_riders"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.sort_riders">[docs]</a>    <span class="k">def</span> <span class="nf">sort_riders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; sort riders by position &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">riders</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">get_pos</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">update_speeds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c"># assuming riders.x is sorted, we are counting how many riders make a &quot;chain&quot;, then</span>
-        <span class="c"># assigning speed based on that.        </span>
+    </div>
+<div class="viewcode-block" id="BikeRace.update_speeds"><a class="viewcode-back" href="../documentation.html#bikerace.BikeRace.update_speeds">[docs]</a>    <span class="k">def</span> <span class="nf">update_speeds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         assuming riders.x is sorted, we are counting how many riders make a &quot;chain&quot;, then</span>
+<span class="sd">         assigning speed based on that.        </span>
+<span class="sd">         &quot;&quot;&quot;</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-6</span>
         <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">):</span>
@@ -170,8 +183,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vfun</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">riders</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">riderchain_len</span> <span class="o">=</span> <span class="n">j</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="n">j</span>
-
+</div></div>
 <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; main code to set up and run the race &quot;&quot;&quot;</span>
     <span class="n">options</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">get_options</span><span class="p">()</span>
     <span class="n">race</span> <span class="o">=</span> <span class="n">BikeRace</span><span class="p">()</span>
     <span class="n">race</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>

@@ -52,6 +52,91 @@
 <p>Concept based on a conversation with my son Henry.</p>
 <div class="section" id="module-bikerace">
 <span id="bike-race"></span><h2>1.1. Bike Race<a class="headerlink" href="#module-bikerace" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bikerace.BikeRace">
+<em class="property">class </em><tt class="descclassname">bikerace.</tt><tt class="descname">BikeRace</tt><a class="reference internal" href="_modules/bikerace.html#BikeRace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace" title="Permalink to this definition">¶</a></dt>
+<dd><p>class that manages the whole race</p>
+<dl class="method">
+<dt id="bikerace.BikeRace.__init__">
+<tt class="descname">__init__</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>pretty empty</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bikerace.BikeRace.__weakref__">
+<tt class="descname">__weakref__</tt><a class="headerlink" href="#bikerace.BikeRace.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.advance_time">
+<tt class="descname">advance_time</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.advance_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.advance_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>do one time step of race</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.dump_riders">
+<tt class="descname">dump_riders</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.dump_riders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.dump_riders" title="Permalink to this definition">¶</a></dt>
+<dd><p>write out riders and positions, etc</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.run">
+<tt class="descname">run</tt><big>(</big><em>options</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>run the race</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.setup">
+<tt class="descname">setup</tt><big>(</big><em>options</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>set up the race</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.sort_riders">
+<tt class="descname">sort_riders</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.sort_riders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.sort_riders" title="Permalink to this definition">¶</a></dt>
+<dd><p>sort riders by position</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.update_speeds">
+<tt class="descname">update_speeds</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.update_speeds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.update_speeds" title="Permalink to this definition">¶</a></dt>
+<dd><p>assuming riders.x is sorted, we are counting how many riders make a &#8220;chain&#8221;, then
+assigning speed based on that.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bikerace.BikeRace.vfun">
+<tt class="descname">vfun</tt><big>(</big><em>glen</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#BikeRace.vfun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.BikeRace.vfun" title="Permalink to this definition">¶</a></dt>
+<dd><p>defines how riders speed depends on size of group</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bikerace.Rider">
+<em class="property">class </em><tt class="descclassname">bikerace.</tt><tt class="descname">Rider</tt><big>(</big><em>x</em>, <em>v</em>, <em>gap</em>, <em>rider_num</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#Rider"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.Rider" title="Permalink to this definition">¶</a></dt>
+<dd><p>data for one rider</p>
+<dl class="attribute">
+<dt id="bikerace.Rider.__weakref__">
+<tt class="descname">__weakref__</tt><a class="headerlink" href="#bikerace.Rider.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bikerace.get_options">
+<tt class="descclassname">bikerace.</tt><tt class="descname">get_options</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/bikerace.html#get_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.get_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>set up the options</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bikerace.get_pos">
+<tt class="descclassname">bikerace.</tt><tt class="descname">get_pos</tt><big>(</big><em>rider</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#get_pos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.get_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>get rider&#8217;s position</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="bikerace.minsec2hrs">
 <tt class="descclassname">bikerace.</tt><tt class="descname">minsec2hrs</tt><big>(</big><em>s</em><big>)</big><a class="reference internal" href="_modules/bikerace.html#minsec2hrs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bikerace.minsec2hrs" title="Permalink to this definition">¶</a></dt>
